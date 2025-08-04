@@ -1,4 +1,4 @@
-# 🧠 Breast Tumor Classification and Segmentation Web App
+# 🧠 Tumor Classification and Segmentation Web App
 
 This project is a Flask-based web application for **breast tumor analysis** from ultrasound images. It provides:
 
