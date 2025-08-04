@@ -4,7 +4,7 @@ This project is a Flask-based web application for **breast tumor analysis** from
 
 - 🩺 **Classification** using EfficientNetB3 (`Benign`, `Malignant`, `Normal`)
 - 🧠 **Segmentation** of tumors using a custom-built **Attention U-Net**
-- 🎯 **Explainability** through Grad-CAM (optional, not visualized in UI)
+- 🎯 **Explainability** through Grad-CAM 
 - 🌐 Clean and interactive web interface for uploading and visualizing results
 
 ---
@@ -33,8 +33,8 @@ This project is a Flask-based web application for **breast tumor analysis** from
 
 1. **Clone the repo**
 ```bash
-git clone https://github.com/yourusername/breast-tumor-analyzer.git
-cd breast-tumor-analyzer
+git clone https://github.com/Vyshnavi-Usha/Breast-Cancer-Analysis-Tumor-Classification-and-Segmentation.git
+cd Breast-Cancer-Analysis-Tumor-Classification-and-Segmentation
 ```
 
 2. **Create virtual environment (optional but recommended)**
@@ -48,8 +48,18 @@ source venv/bin/activate    # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. **Place your models**
-- Add `efficientnet_model.h5` and `tumor_segmentation_model.h5` in the project root directory.
+### 4. Download Model Files
+
+Place the following `.h5` model files in the root directory:
+- `efficientnet_model.h5`
+- `tumor_segmentation_model.h5`
+
+> 💡 These files are too large to be stored on GitHub directly.  
+> You can download them from Hugging Face:
+> - [EfficientNet Model](https://huggingface.co/Vysh-navi/breast-cancer-tumor-classification-segmentation/resolve/main/efficientnet_model.h5)
+> - [Tumor Segmentation Model](https://huggingface.co/Vysh-navi/breast-cancer-tumor-classification-segmentation/resolve/main/tumor_segmentation_model.h5
+)
+
 
 5. **Run the app**
 ```bash
@@ -71,13 +81,13 @@ Open your browser at [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ---
 
-## 🖼️ Sample Outputs
+## 📸 Sample Results
 
-- **Normal**:
-  > Only the input image is displayed.
+### Input  
+![Input image](static/input.png)
 
-- **Benign / Malignant**:
-  > Tumor region is segmented and shown as red overlay.
+### Output 
+![Segmented Output](static/output.png)
 
 ---
 
