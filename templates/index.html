@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tumor Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #000035;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+            max-width: 90%;
+            width: 600px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        h1, h2, h3 {
+            color: #f8f9fa;
+        }
+        button {
+            background-color:#1338BE;;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.custom-file-upload {
+    background-color: #1338BE;;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+.custom-file-upload:hover {
+    background-color: #e84118;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-name {
+    color: white;
+    font-size: 16px;
+}
+    
+button {
+    background-color: #1338BE;;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #e84118;
+}
+
+
+        img {
+            max-width: 250px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 2px solid #ff4757;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        h1 {
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+}
+.single-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <h1>Tumor Analysis</h1>
+    <div class="container">
+       
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file-upload" class="custom-file-upload">Choose File</label>
+                <input id="file-upload" type="file" name="image" accept="image/*" required onchange="updateFileName()">
+                <span class="file-name">No file chosen</span>
+                <button type="submit">Upload and Analyze</button>
+            </div>
+        </form>
+        
+        <script>
+            function updateFileName() {
+                const input = document.getElementById('file-upload');
+                const fileName = document.querySelector('.file-name');
+                fileName.textContent = input.files.length > 0 ? input.files[0].name : 'No file chosen';
+            }
+        </script>
+        
+        
+
+        {% if classification %}
+        <p>
+            <span style="font-size: 18px; font-weight: bold;">Result : </span> 
+            <strong>{{ classification }}</strong> 
+        </p>
+        
+           
+        {% endif %}
+
+        {% if classification == "Normal" %}
+            <h3>Original Image:</h3>
+            <div class="single-image">
+                <img src="{{ input_image }}" alt="Input Image">
+            </div>
+        {% elif output_image %}
+            <div class="image-container">
+                <div>
+                    <h3>Original Image</h3>
+                    <img src="{{ input_image }}" alt="Input Image">
+                </div>
+                <div>
+                    <h3>Segmented Tumor</h3>
+                    <img src="{{ output_image }}" alt="Segmented Image">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
